@@ -1,0 +1,44 @@
+{
+  "name": "KWEB-Web-Study",
+
+  "dockerComposeFile": "docker-compose.yml",
+
+  "service": "app",
+
+  "workspaceFolder": "/workspace",
+
+  "hostRequirements": {
+    "cpus": 2
+  },
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y default-mysql-client",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "humao.rest-client",
+        "ms-azuretools.vscode-docker",
+        "cweijan.vscode-mysql-client2"
+      ],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  }
+}
